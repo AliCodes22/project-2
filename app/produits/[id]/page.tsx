@@ -69,10 +69,7 @@ const ProductDetailsPage = async ({
     <>
       <section>
         <div className="flex justify-between items-center">
-          {/* Left side: H1 */}
           <h1 className="text-lg font-bold">Produit {id}</h1>
-
-          {/* Right side: Bell icon and avatar */}
         </div>
 
         <hr />

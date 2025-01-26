@@ -27,28 +27,37 @@ const HomePage = async (): Promise<JSX.Element> => {
 
   return (
     <>
-      <div className="flex flex-end">
-        <h1 className="text-lg font-bold">Mes Produits</h1>
-        <DialogDemo action="Ajouter" />
-      </div>
-      <hr />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
-        {halfData.map((item: Product) => {
-          // utilise la technique destructuring pour avoir les props necessaires de l'item
-          const { id, name, description, image, price } = item;
+      <h1 className="text-xl font-bold ml-10 text-lg">Mes Produits</h1>
+      <div className="p-6 bg-gray-50 min-h-screen mx-auto ml-10">
+        {/* Header Section */}
 
-          // On retourne la carte MuiCard pour chacun des articles
-          return (
-            <MuiCard
-              key={id}
-              name={name}
-              description={description}
-              price={price}
-              id={id}
-              image={imageMap[item.name]}
-            />
-          );
-        })}
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-2xl font-semibold text-blue-800">
+              Gestion des produits
+            </h1>
+            <p className="text-gray-600 text-sm">Liste de vos produits</p>
+          </div>
+          <DialogDemo action="Ajouter" />
+        </div>
+
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {halfData.map((item: Product) => {
+            const { id, name, description, image, price } = item;
+
+            return (
+              <MuiCard
+                key={id}
+                name={name}
+                description={description}
+                price={price}
+                id={id}
+                image={imageMap[item.name]}
+              />
+            );
+          })}
+        </div>
       </div>
     </>
   );

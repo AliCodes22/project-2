@@ -35,7 +35,6 @@ export default function RootLayout({
           <main>
             <BellAvatar />
             <SidebarTrigger />
-
             {children}
           </main>
         </SidebarProvider>
