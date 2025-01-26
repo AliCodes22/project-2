@@ -15,7 +15,7 @@ import { ChartColumnIncreasing, ShoppingCart, LogOut } from "lucide-react";
 const items = [
   {
     title: "Produits",
-    url: "/produits",
+    url: "/",
     icon: ChartColumnIncreasing,
   },
   {

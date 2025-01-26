@@ -1,6 +1,7 @@
 import { IoMdArrowRoundBack } from "react-icons/io";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { BellDot } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 import { notFound } from "next/navigation";
@@ -11,6 +12,10 @@ import ProductImage from "@/components/ProductImage";
 import ProductPrice from "@/components/ProductPrice";
 import { imageMap } from "@/lib/utils";
 import { DialogDemo } from "@/components/Dialog";
+
+import avatarPath from "@/public/images/avatar-svgrepo-com.svg";
+import Image from "next/image";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 // on genere le metadata pour des produits individuel
 export const generateMetadata = async ({ params }: Props): Metadata => {
@@ -63,6 +68,15 @@ const ProductDetailsPage = async ({
   return (
     <>
       <section>
+        <div className="flex justify-between items-center">
+          {/* Left side: H1 */}
+          <h1 className="text-lg font-bold">Produit {id}</h1>
+
+          {/* Right side: Bell icon and avatar */}
+        </div>
+
+        <hr />
+
         <div className="grid grid-cols-1 md:grid-cols-5">
           <div className="col-span-2">
             <ProductImage image={imageMap[productData.name]} />
@@ -79,7 +93,7 @@ const ProductDetailsPage = async ({
                   </p>
                 </div>
                 <div className="flex items-center gap-2 mt-4">
-                  <span className="text-lg font-semibold text-gray-700">
+                  <span className="text-lg font-semibold text-yellow-300">
                     Prix:
                   </span>
                   <span className="text-xl font-bold text-black-600  px-3 py-1 rounded-lg">
@@ -109,7 +123,7 @@ const ProductDetailsPage = async ({
 
       <div className="mt-20">
         <Button asChild>
-          <Link href="/produits">
+          <Link href="/">
             <IoMdArrowRoundBack />
             Retour aux produits
           </Link>
