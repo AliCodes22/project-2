@@ -27,7 +27,13 @@ const formSchema = z.object({
   name_2410890255: z.boolean(),
 });
 
-export default function MyForm() {
+export default function MyForm({
+  setOpen,
+  open,
+}: {
+  open: boolean;
+  setOpen: (value: boolean) => void;
+}) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -135,7 +141,14 @@ export default function MyForm() {
             </FormItem>
           )}
         />
-        <Button className="" type="submit" className="mr-4">
+        <Button
+          className=""
+          type="button"
+          className="mr-4"
+          onClick={() => {
+            setOpen(false);
+          }}
+        >
           Annuler
         </Button>
         <Button className="" type="submit">

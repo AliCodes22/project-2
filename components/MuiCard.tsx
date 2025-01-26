@@ -17,6 +17,7 @@ import {
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { MoreVert as MoreVertIcon } from "@mui/icons-material";
 import { FiTool } from "react-icons/fi";
+import { DialogDemo } from "./Dialog";
 
 // type pour les props du Card
 type CardProps = {
