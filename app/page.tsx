@@ -3,6 +3,7 @@ import MuiCard from "@/components/MuiCard";
 import { Button } from "@/components/ui/button";
 import { imageMap } from "@/lib/utils";
 import { Plus } from "lucide-react";
+import ImgMediaCard from "../components/MuiCard";
 
 // Definir le type pour le produit
 type Product = {
@@ -24,6 +25,7 @@ const HomePage = async (): Promise<JSX.Element> => {
     .slice(0, 6)
     // on exclut webcam
     .filter((item) => item.name !== "1080p Webcam");
+  console.log(halfData);
 
   return (
     <>
@@ -43,18 +45,12 @@ const HomePage = async (): Promise<JSX.Element> => {
 
         {/* Grid Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {halfData.map((item: Product) => {
+          {halfData.map((item: Product, index: number) => {
+            console.log(index);
             const { id, name, description, image, price } = item;
 
             return (
-              <MuiCard
-                key={id}
-                name={name}
-                description={description}
-                price={price}
-                id={id}
-                image={imageMap[item.name]}
-              />
+              <ImgMediaCard id={id} key={id} price={price} number={index} />
             );
           })}
         </div>

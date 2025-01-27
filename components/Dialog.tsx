@@ -23,8 +23,8 @@ export function DialogDemo({ action }: { action: string }) {
 
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle className="mt-25 text-center">
-            Ajout/Modification du produit
+          <DialogTitle className="mt-25 text-center text-blue-400">
+            Ajout / Modification du produit
           </DialogTitle>
         </DialogHeader>
         <MyForm setOpen={setOpen} open={open} />

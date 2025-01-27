@@ -1,121 +1,57 @@
 "use client";
 
-import { useRouter } from "next/navigation"; // Router pour pouvoir naviguer dans l'application
-import { useState } from "react"; // State management for dialog
+import React from "react";
+import Card from "@mui/material/Card";
+import CardActionArea from "@mui/material/CardActionArea";
+import CardContent from "@mui/material/CardContent";
+import Typography from "@mui/material/Typography";
+import { CircleDollarSign, FileText } from "lucide-react";
+import Link from "next/link";
 
-import {
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-  CardMedia,
-  IconButton,
-  Popover,
-} from "@mui/material"; // Material-UI components pour le style
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { MoreVert as MoreVertIcon } from "@mui/icons-material";
-import { FiTool } from "react-icons/fi";
-import { DialogDemo } from "./Dialog";
-
-// type pour les props du Card
-type CardProps = {
-  id: number;
-  name: string;
-  description: string;
-  image: string;
-  price: number;
-};
-
-// Card cree avec Material-UI. Affiche details du produit incluant le nom, prix et description
-const MuiCard = ({ id, name, description, image, price }: CardProps) => {
-  const router: AppRouterInstance = useRouter();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-  const handleClickOpen = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const idPopover = open ? "simple-popover" : undefined;
+export default function ImgMediaCard({ id, price, number }) {
+  // la date d'activation formatee
+  const date = new Date();
+  const formattedDate = `${date.getDate()}-${
+    date.getMonth() + 1
+  }-${date.getFullYear()}`;
 
   return (
-    <Box className="max-w-xs transition duration-300 ease-in-out ">
-      <Card className="h-full flex flex-col shadow-md hover:shadow-lg  transition-shadow duration-300">
-        <CardMedia
-          component="img"
-          height="180"
-          image={image}
-          alt={name}
-          className="object-cover"
-        />
-        <CardContent className="flex-grow">
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            className="font-bold"
-          >
-            {name}
-          </Typography>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            className="line-clamp-2"
-          >
-            {description}
-          </Typography>
-        </CardContent>
-        <CardActions className="mt-auto flex justify-between">
-          <Button
-            size="small"
-            variant="outlined"
-            className="bg-red-200 border-red-500 text-neutral-900 hover:bg-zinc-200"
-            color="primary"
-            onClick={() => {
-              router.push(`/produits/${id}`);
-            }}
-          >
-            Details
-          </Button>
-          <Typography
-            variant="body1"
-            className="font-semibold text-black-600 pr-5"
-          >
-            Prix: ${price}
-          </Typography>
-          <IconButton onClick={handleClickOpen}>
-            <FiTool />
-          </IconButton>
-        </CardActions>
+    <Link href={`/produits/${id}`}>
+      <Card sx={{ maxWidth: 345 }}>
+        <CardActionArea>
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h6"
+              component="h3"
+              className="text-blue-400 font-bold"
+            >
+              Produit {number + 1}
+            </Typography>
+
+            {/* Aligning dollar sign and price */}
+            <div className="flex items-center space-x-2">
+              <CircleDollarSign size={20} color="#e2db00" />
+              <Typography gutterBottom variant="h6" component="h3">
+                Prix: {price}$
+              </Typography>
+            </div>
+
+            {/* Aligning file icon and description */}
+            <div className="flex items-center space-x-2">
+              <FileText size={20} color="#e1e122" />
+              <Typography variant="body2" color="textSecondary" component="p">
+                Description du produit {number + 1}...
+              </Typography>
+            </div>
+          </CardContent>
+        </CardActionArea>
+        <div>
+          <p className="text-green-400 font-bold ml-5">
+            Activation: {formattedDate}
+          </p>
+        </div>
       </Card>
-
-      <Popover
-        id={idPopover}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-      >
-        <Box p={1}>
-          <Button className="text-black font-semibold">Modifier</Button>
-          <Button className="text-red-500 font-semibold">Supprimer</Button>
-        </Box>
-      </Popover>
-    </Box>
+    </Link>
   );
-};
-
-export default MuiCard;
+}

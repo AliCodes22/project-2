@@ -127,7 +127,7 @@ export default function MyForm({
           control={form.control}
           name="name_2410890255"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+            <FormItem className="flex flex-row items-center justify-between rounded-lg border-none p-4">
               <div className="space-y-1">
                 <FormLabel>Rupture du stock</FormLabel>
               </div>
@@ -142,16 +142,15 @@ export default function MyForm({
           )}
         />
         <Button
-          className=""
           type="button"
-          className="mr-4"
+          className="mr-10 bg-neutral text-yellow-500"
           onClick={() => {
             setOpen(false);
           }}
         >
           Annuler
         </Button>
-        <Button className="" type="submit">
+        <Button className="bg-neutral text-yellow-500" type="submit">
           Enregistrer
         </Button>
       </form>

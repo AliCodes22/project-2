@@ -67,11 +67,10 @@ const ProductDetailsPage = async ({
 
   return (
     <>
-      <section>
-        <div className="flex justify-between items-center">
-          <h1 className="text-lg font-bold">Produit {id}</h1>
-        </div>
-
+      <div className="ml-10 font-bold text-xl">
+        <h1 className="text-lg font-bold">Produit {id}</h1>
+      </div>
+      <section className="p-6 bg-gray-50 min-h-screen mx-auto ml-10">
         <hr />
 
         <div className="grid grid-cols-1 md:grid-cols-5">
@@ -116,16 +115,15 @@ const ProductDetailsPage = async ({
             </CardContent>
           </Card>
         </div>
+        <div className="mt-20">
+          <Button asChild>
+            <Link href="/">
+              <IoMdArrowRoundBack />
+              Retour aux produits
+            </Link>
+          </Button>
+        </div>
       </section>
-
-      <div className="mt-20">
-        <Button asChild>
-          <Link href="/">
-            <IoMdArrowRoundBack />
-            Retour aux produits
-          </Link>
-        </Button>
-      </div>
     </>
   );
 };

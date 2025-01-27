@@ -9,8 +9,10 @@ import {
   SidebarMenuItem,
   SidebarFooter,
 } from "@/components/ui/sidebar";
+import Logo from "@/public/images/Screenshot 2025-01-27 at 12.09.01 AM.png";
 
 import { ChartColumnIncreasing, ShoppingCart, LogOut } from "lucide-react";
+import Image from "next/image";
 
 const items = [
   {
@@ -30,6 +32,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <SidebarGroup>
+          <Image src={Logo} alt="XpertSource Logo" />
           <SidebarGroupLabel>Menu</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
