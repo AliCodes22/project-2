@@ -40,6 +40,7 @@ const HomePage = async (): Promise<JSX.Element> => {
             </h1>
             <p className="text-gray-600 text-sm">Liste de vos produits</p>
           </div>
+
           <DialogDemo action="Ajouter" />
         </div>
 

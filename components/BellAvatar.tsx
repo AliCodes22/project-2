@@ -1,8 +1,6 @@
 import { BellDot } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-import Image from "next/image";
-
 const BellAvatar = () => {
   return (
     <div className="flex justify-end items-center space-x-4">

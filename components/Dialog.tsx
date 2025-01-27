@@ -16,7 +16,14 @@ export function DialogDemo({ action }: { action: string }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="secondary" className="bg-zinc-300">
+        <Button
+          variant="secondary"
+          className={
+            action === "Ajouter"
+              ? "bg-yellow-500 hover:bg-yellow-400"
+              : "bg-zinc-500"
+          }
+        >
           {action}
         </Button>
       </DialogTrigger>
