@@ -7,6 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { CircleDollarSign, FileText } from "lucide-react";
 import Link from "next/link";
+import LongMenu from "./Popover";
 
 export default function ImgMediaCard({ id, price, number }) {
   // la date d'activation formatee
@@ -16,8 +17,8 @@ export default function ImgMediaCard({ id, price, number }) {
   }-${date.getFullYear()}`;
 
   return (
-    <Link href={`/produits/${id}`}>
-      <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }}>
+      <Link href={`/produits/${id}`}>
         <CardActionArea>
           <CardContent>
             <Typography
@@ -51,7 +52,9 @@ export default function ImgMediaCard({ id, price, number }) {
             Activation: {formattedDate}
           </p>
         </div>
-      </Card>
-    </Link>
+      </Link>
+
+      <LongMenu />
+    </Card>
   );
 }
